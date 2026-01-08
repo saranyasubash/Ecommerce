@@ -1,0 +1,39 @@
+<div class="max-w-xl mx-auto bg-white p-6 rounded-xl shadow">
+
+  <h2 class="text-2xl font-bold mb-6 text-slate-800">
+    {{ isEdit ? 'Edit Category' : 'Add Category' }}
+  </h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4">
+
+    <div>
+      <label class="block text-sm font-medium mb-1">Category Name</label>
+      <input
+        type="text"
+        formControlName="name"
+        class="w-full border rounded px-3 py-2"
+        placeholder="Enter category name"
+      />
+      <p *ngIf="form.get('name')?.touched && form.get('name')?.invalid"
+         class="text-red-500 text-sm">
+        Name is required
+      </p>
+    </div>
+
+    <div class="flex justify-end gap-3">
+      <button
+        type="button"
+        routerLink="/admin/categories"
+        class="px-4 py-2 border rounded">
+        Cancel
+      </button>
+
+      <button
+        type="submit"
+        class="bg-black text-white px-6 py-2 rounded hover:bg-slate-800">
+        {{ isEdit ? 'Update' : 'Create' }}
+      </button>
+    </div>
+
+  </form>
+</div>
